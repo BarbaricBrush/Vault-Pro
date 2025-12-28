@@ -1,0 +1,115 @@
+@import "tailwindcss";
+
+:root {
+  /* Default to Light Mode */
+  --background: #ffffff;
+  --foreground: #0f172a;
+  
+  --card: #ffffff;
+  --card-hover: #f8fafc;
+  
+  --border: #e2e8f0;
+  
+  --primary: #2563eb; /* Blue 600 */
+  --primary-glow: rgba(37, 99, 235, 0.1);
+  
+  --sidebar-bg: #f8fafc;
+  --text-muted: #64748b;
+}
+
+[data-theme="dark"] {
+  /* Deep Blue/Black Base */
+  --background: #0B0E14; 
+  --foreground: #ffffff;
+  
+  /* Cards */
+  --card: #151921;
+  --card-hover: #1A1F29;
+  
+  /* Borders */
+  --border: rgba(255, 255, 255, 0.08);
+  
+  --primary: #3b82f6; /* Blue 500 */
+  --primary-glow: rgba(59, 130, 246, 0.15);
+  
+  --sidebar-bg: rgba(11, 14, 20, 0.85);
+  --text-muted: #94a3b8;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-hover: var(--card-hover);
+  --color-border: var(--border);
+  --color-primary: var(--primary);
+  --color-sidebar: var(--sidebar-bg);
+  --color-muted: var(--text-muted);
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-geist-sans), sans-serif;
+  overflow-x: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* --- AMBIENT GLOW EFFECTS (Dark Mode Only) --- */
+[data-theme="dark"] .ambient-glow {
+  position: fixed;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.08) 0%, rgba(0, 0, 0, 0) 70%);
+  top: -200px;
+  left: -100px;
+  z-index: -1;
+  pointer-events: none;
+}
+
+[data-theme="dark"] .ambient-glow-2 {
+  position: fixed;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(16, 185, 129, 0.05) 0%, rgba(0, 0, 0, 0) 70%);
+  bottom: -100px;
+  right: -100px;
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* --- GLASSMORPHISM UTILS --- */
+.glass-panel {
+  background: var(--card); /* Fallback */
+}
+
+[data-theme="dark"] .glass-panel {
+  background: rgba(21, 25, 33, 0.7);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
+}
+
+[data-theme="light"] .glass-panel {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--border);
+}
+
+.glass-sidebar {
+  background: var(--sidebar-bg);
+  backdrop-filter: blur(16px);
+  border-right: 1px solid var(--border);
+}
+
+/* --- SCROLLBAR --- */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 10px;
+}

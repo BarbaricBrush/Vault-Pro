@@ -1,0 +1,7 @@
+# COPY THESE TO YOUR TRUELAYER CONSOLE (LIVE APP SETTINGS)
+# --------------------------------------------------------
+# Go to: App Settings -> Redirect URIs
+
+http://localhost:8000/auth/callback
+https://console.truelayer.com/redirect-page
+http://localhost:3000/callback
